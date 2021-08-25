@@ -18,7 +18,7 @@ function App() {
     const unregisterAuthObserver = firebase
       .auth()
       .onAuthStateChanged((user) => {
-        console.log(user);
+        firebase.auth().currentUser?.getIdTokenResult().then(console.log);
         setIsSignedIn(!!user);
       });
     return () => unregisterAuthObserver();
@@ -26,21 +26,23 @@ function App() {
 
   useEffect(() => {
     const email = "tim@nuclius,com";
-    rtdb
-      .ref("invited_users/")
-      .child(email)
-      .get()
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          console.log(snapshot.val());
-        } else {
-          console.log("User not invited");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+    if (isSignedIn) {
+      rtdb
+        .ref("invited_users/")
+        .child(email)
+        .get()
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            console.log(snapshot.val());
+          } else {
+            console.log("User not invited");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [isSignedIn]);
 
   return (
     <div className="App">
