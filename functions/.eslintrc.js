@@ -26,5 +26,7 @@ module.exports = {
     "import/no-unresolved": 0,
     "object-curly-spacing": "off",
     "quote-props": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    indent: "off",
   },
 };
