@@ -1,0 +1,6 @@
+{
+  "rules": {
+    ".read": "auth.token.invited === true",
+    ".write": "auth.token.invited === true"
+  }
+}
