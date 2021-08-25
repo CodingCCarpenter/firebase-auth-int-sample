@@ -17,7 +17,7 @@ firebase.initializeApp(firebaseConfig);
 export default firebase;
 export const rtdb = firebase.database();
 export const auth = firebase.auth();
-if (window.location.hostname === "localhost") {
-  rtdb.useEmulator("localhost", 9000);
-  auth.useEmulator("http://localhost:9099");
-}
+// if (window.location.hostname === "localhost") {
+//   rtdb.useEmulator("localhost", 9000);
+//   auth.useEmulator("http://localhost:9099");
+// }
